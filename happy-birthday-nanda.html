@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Nanda Cantika 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose: #e8435a;
+      --blush: #f7b8c4;
+      --gold: #d4af6a;
+      --cream: #fdf6ef;
+      --deep: #2a1a2e;
+      --pink-light: #fce4ec;
+    }
+
+    body {
+      background: var(--deep);
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--cream);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ── PARTICLES ── */
+    #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatUp var(--dur) ease-in infinite;
+      animation-delay: var(--delay);
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.6; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* ── MAIN WRAPPER ── */
+    .page {
+      position: relative; z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+      text-align: center;
+    }
+
+    /* ── HEADER ── */
+    .crown { font-size: 2.5rem; animation: bounce 2s ease-in-out infinite; display: block; }
+    @keyframes bounce { 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-10px);} }
+
+    .title-main {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      background: linear-gradient(135deg, var(--gold), var(--blush), var(--rose), var(--gold));
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 4s ease infinite;
+      line-height: 1.1;
+      margin-top: 8px;
+    }
+    @keyframes shimmer { 0%,100%{ background-position:0% 50%;} 50%{ background-position:100% 50%;} }
+
+    .subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      opacity: 0.85;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    /* ── PHOTO SLOT ── */
+    .photo-section {
+      margin: 40px auto 0;
+      position: relative;
+      width: 200px; height: 200px;
+    }
+    .photo-ring {
+      position: absolute; inset: -12px;
+      border-radius: 50%;
+      background: conic-gradient(var(--rose), var(--gold), var(--blush), var(--rose));
+      animation: spin 6s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .photo-inner {
+      position: relative; z-index: 1;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #3a2040;
+      border: 4px solid var(--deep);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.3s;
+    }
+    .photo-inner:hover { transform: scale(1.04); }
+    .photo-inner img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: none;
+      border-radius: 50%;
+    }
+    .photo-inner img.visible { display: block; }
+    .photo-placeholder { text-align: center; pointer-events: none; }
+    .photo-placeholder .icon { font-size: 2.2rem; }
+    .photo-placeholder p { font-size: 0.75rem; color: var(--blush); opacity: 0.8; line-height: 1.4; }
+    #fileInput { display: none; }
+
+    /* ── CAKE ── */
+    .cake-section { margin: 48px 0 20px; }
+    .cake-wrap { position: relative; display: inline-block; }
+
+    svg.cake { width: 220px; height: auto; overflow: visible; }
+
+    /* Candle flames */
+    .flame {
+      transform-origin: center bottom;
+      animation: flicker 0.4s ease-in-out infinite alternate;
+    }
+    .flame:nth-child(2) { animation-delay: 0.13s; }
+    .flame:nth-child(3) { animation-delay: 0.27s; }
+    @keyframes flicker {
+      0%   { transform: scaleX(1)   scaleY(1)   rotate(-3deg); opacity: 1; }
+      100% { transform: scaleX(0.85) scaleY(1.2) rotate(3deg);  opacity: 0.85; }
+    }
+
+    .cake-glow {
+      position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 120px; height: 60px;
+      background: radial-gradient(ellipse, rgba(255,200,100,0.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── AGE BADGE ── */
+    .age-badge {
+      display: inline-block;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.2rem;
+      background: linear-gradient(135deg, var(--gold), #fff8dc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 4px;
+    }
+    .age-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--blush);
+      text-transform: uppercase;
+      margin-top: -4px;
+    }
+
+    /* ── ROMANTIC MESSAGE ── */
+    .message-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid rgba(212,175,106,0.3);
+      border-radius: 24px;
+      padding: 36px 32px;
+      margin: 40px 0;
+      position: relative;
+      backdrop-filter: blur(8px);
+    }
+    .message-card::before, .message-card::after {
+      content: '"';
+      font-family: 'Great Vibes', cursive;
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.25;
+      position: absolute;
+      line-height: 1;
+    }
+    .message-card::before { top: 10px; left: 20px; }
+    .message-card::after  { content: '"'; bottom: -10px; right: 20px; }
+
+    .message-card p {
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: var(--cream);
+      font-style: italic;
+      font-weight: 300;
+    }
+    .message-card .name-highlight {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.6rem;
+      color: var(--rose);
+      font-style: normal;
+    }
+
+    /* ── WISHES LIST ── */
+    .wishes {
+      display: flex; flex-direction: column; gap: 14px;
+      margin: 32px 0;
+      text-align: left;
+    }
+    .wish-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: rgba(255,255,255,0.04);
+      border-left: 3px solid var(--rose);
+      border-radius: 0 12px 12px 0;
+      padding: 14px 18px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--cream);
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .wish-item.visible { opacity: 1; transform: translateX(0); }
+    .wish-item .wi { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+
+    /* ── CONFETTI BUTTON ── */
+    .confetti-btn {
+      background: linear-gradient(135deg, var(--rose), #c0394f);
+      border: none;
+      border-radius: 50px;
+      padding: 14px 36px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 6px 30px rgba(232,67,90,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-transform: uppercase;
+    }
+    .confetti-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(232,67,90,0.5); }
+    .confetti-btn:active { transform: scale(0.97); }
+
+    /* ── CONFETTI CANVAS ── */
+    #confettiCanvas {
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 56px;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      opacity: 0.5;
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 420px) {
+      .message-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confettiCanvas"></canvas>
+<div id="particles"></div>
+
+<div class="page">
+
+  <!-- Header -->
+  <span class="crown">👑</span>
+  <h1 class="title-main">Happy Birthday</h1>
+  <div class="subtitle">Nanda Cantika Malaysiene</div>
+
+  <!-- Photo Slot -->
+  <div class="photo-section">
+    <div class="photo-ring"></div>
+    <div class="photo-inner" id="photoInner" onclick="document.getElementById('fileInput').click()">
+      <img id="photoImg" alt="Foto Nanda"/>
+      <div class="photo-placeholder" id="photoPlaceholder">
+        <div class="icon">📸</div>
+        <p>Klik untuk<br/>tambah foto</p>
+      </div>
+    </div>
+    <input type="file" id="fileInput" accept="image/*" onchange="loadPhoto(event)"/>
+  </div>
+
+  <!-- Cake -->
+  <div class="cake-section">
+    <div class="cake-wrap">
+      <div class="cake-glow"></div>
+      <svg class="cake" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+        <!-- Candles -->
+        <g class="flame"><ellipse cx="70"  cy="28" rx="5" ry="8" fill="#FFD54F" opacity="0.9"/><ellipse cx="70"  cy="30" rx="3" ry="5" fill="#FF6F00"/></g>
+        <g class="flame"><ellipse cx="110" cy="20" rx="5" ry="9" fill="#FFD54F" opacity="0.95"/><ellipse cx="110" cy="22" rx="3" ry="6" fill="#FF6F00"/></g>
+        <g class="flame"><ellipse cx="150" cy="28" rx="5" ry="8" fill="#FFD54F" opacity="0.9"/><ellipse cx="150" cy="30" rx="3" ry="5" fill="#FF6F00"/></g>
+
+        <!-- Candle sticks -->
+        <rect x="67" y="36" width="6" height="20" rx="2" fill="#F48FB1"/>
+        <rect x="107" y="28" width="6" height="22" rx="2" fill="#CE93D8"/>
+        <rect x="147" y="36" width="6" height="20" rx="2" fill="#F48FB1"/>
+
+        <!-- Top tier -->
+        <ellipse cx="110" cy="62" rx="52" ry="10" fill="#F06292"/>
+        <rect x="58" y="62" width="104" height="32" fill="#E91E8C"/>
+        <ellipse cx="110" cy="94" rx="52" ry="10" fill="#F48FB1"/>
+        <!-- deco top tier -->
+        <text x="110" y="83" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.6)">✦ 26 ✦</text>
+
+        <!-- Middle tier -->
+        <ellipse cx="110" cy="94" rx="68" ry="12" fill="#CE93D8"/>
+        <rect x="42" y="94" width="136" height="36" fill="#AB47BC"/>
+        <ellipse cx="110" cy="130" rx="68" ry="12" fill="#CE93D8"/>
+        <!-- deco middle -->
+        <circle cx="75"  cy="112" r="4" fill="#FFD54F" opacity="0.7"/>
+        <circle cx="95"  cy="118" r="3" fill="#FF8A65" opacity="0.7"/>
+        <circle cx="115" cy="110" r="4" fill="#FFD54F" opacity="0.7"/>
+        <circle cx="135" cy="116" r="3" fill="#FF8A65" opacity="0.7"/>
+        <circle cx="152" cy="111" r="4" fill="#FFD54F" opacity="0.7"/>
+
+        <!-- Bottom tier -->
+        <ellipse cx="110" cy="130" rx="82" ry="14" fill="#F8BBD9"/>
+        <rect x="28" y="130" width="164" height="38" fill="#F06292"/>
+        <ellipse cx="110" cy="168" rx="82" ry="14" fill="#F8BBD9"/>
+        <!-- deco bottom -->
+        <text x="110" y="153" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.65)">🌸 Happy Birthday 🌸</text>
+
+        <!-- Plate -->
+        <ellipse cx="110" cy="172" rx="90" ry="10" fill="#D4AF6A" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <div class="age-badge">26</div>
+    <div class="age-label">Tahun Bersinar ✨</div>
+  </div>
+
+  <!-- Romantic Message -->
+  <div class="message-card">
+    <p>
+      Di hari yang indah ini, seluruh semesta tersenyum merayakan kehadiranmu.<br/><br/>
+      <span class="name-highlight">Nanda Cantika Malaysiene</span>,<br/>
+      kamu bukan sekadar nama — kamu adalah puisi yang berjalan, 
+      sebuah melodi yang tak pernah berhenti membuatku terpesona.<br/><br/>
+      Semoga di usiamu yang <strong>26</strong> ini, hidupmu dipenuhi cinta yang tulus, 
+      tawa yang hangat, dan mimpi-mimpi yang menjadi nyata satu per satu — 
+      seperti bintang-bintang yang muncul di langit malam untuk hanya menyinarimu.
+    </p>
+  </div>
+
+  <!-- Wishes -->
+  <div class="wishes" id="wishesList">
+    <div class="wish-item"><span class="wi">💖</span><span>Semoga cintamu selalu bertumbuh dan mekar indah seperti bunga di musim semi.</span></div>
+    <div class="wish-item"><span class="wi">🌟</span><span>Semoga setiap langkahmu penuh cahaya, membawa kebahagiaan di manapun kamu berada.</span></div>
+    <div class="wish-item"><span class="wi">🎯</span><span>Semoga semua impian dan cita-citamu terwujud dengan cara yang paling indah.</span></div>
+    <div class="wish-item"><span class="wi">🌸</span><span>Semoga kesehatanmu selalu terjaga, karena dunia lebih cerah dengan senyummu.</span></div>
+    <div class="wish-item"><span class="wi">✨</span><span>Semoga usiamu yang baru ini membawa versi terbaik dirimu — lebih kuat, lebih bijak, lebih bercahaya.</span></div>
+  </div>
+
+  <!-- Button -->
+  <button class="confetti-btn" onclick="launchConfetti()">🎉 Rayakan Sekarang!</button>
+
+  <div class="footer">Made with ❤️ for Nanda · 2025</div>
+</div>
+
+<script>
+  /* ── FLOATING PARTICLES ── */
+  const colors = ['#e8435a','#f7b8c4','#d4af6a','#ce93d8','#ffd54f'];
+  const shapes = ['🌸','💗','⭐','🌷','✨','💫','🦋'];
+  const pc = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const el = document.createElement('div');
+    const isEmoji = Math.random() > 0.5;
+    if (isEmoji) {
+      el.textContent = shapes[Math.floor(Math.random()*shapes.length)];
+      el.style.fontSize = (12 + Math.random()*14) + 'px';
+    } else {
+      el.classList.add('particle');
+      const s = 4 + Math.random()*8;
+      el.style.width = el.style.height = s+'px';
+      el.style.background = colors[Math.floor(Math.random()*colors.length)];
+    }
+    el.classList.add('particle');
+    el.style.left = Math.random()*100+'vw';
+    el.style.setProperty('--dur', (6+Math.random()*8)+'s');
+    el.style.setProperty('--delay', (Math.random()*8)+'s');
+    pc.appendChild(el);
+  }
+
+  /* ── PHOTO LOAD ── */
+  function loadPhoto(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const img = document.getElementById('photoImg');
+      img.src = ev.target.result;
+      img.classList.add('visible');
+      document.getElementById('photoPlaceholder').style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  /* ── WISHES ANIMATION ── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const items = e.target.querySelectorAll('.wish-item');
+        items.forEach((item, i) => {
+          setTimeout(() => item.classList.add('visible'), i*150);
+        });
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  observer.observe(document.getElementById('wishesList'));
+
+  /* ── CONFETTI ── */
+  const canvas = document.getElementById('confettiCanvas');
+  const ctx = canvas.getContext('2d');
+  let confettiPieces = [];
+  let animId;
+
+  function launchConfetti() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    confettiPieces = [];
+    for (let i = 0; i < 180; i++) {
+      confettiPieces.push({
+        x: Math.random() * canvas.width,
+        y: -20 - Math.random() * 200,
+        w: 8 + Math.random()*8,
+        h: 4 + Math.random()*4,
+        color: colors[Math.floor(Math.random()*colors.length)],
+        vx: -2 + Math.random()*4,
+        vy: 3 + Math.random()*5,
+        angle: Math.random()*360,
+        spin: -3 + Math.random()*6,
+        alpha: 1
+      });
+    }
+    cancelAnimationFrame(animId);
+    drawConfetti();
+  }
+
+  function drawConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let alive = false;
+    confettiPieces.forEach(p => {
+      p.x += p.vx; p.y += p.vy; p.angle += p.spin;
+      if (p.y > canvas.height * 0.7) p.alpha -= 0.015;
+      if (p.alpha <= 0) return;
+      alive = true;
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, p.alpha);
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.angle * Math.PI/180);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+      ctx.restore();
+    });
+    if (alive) animId = requestAnimationFrame(drawConfetti);
+    else ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+</script>
+</body>
+</html>
