@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday Nanda Cantika 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,700&family=Pacifico&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --pink:   #ff4d8d;
+  --purple: #a855f7;
+  --cyan:   #22d3ee;
+  --yellow: #fbbf24;
+  --orange: #f97316;
+  --lime:   #84cc16;
+  --bg:     #0d0d1a;
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  font-family:'Space Grotesk',sans-serif;
+  color:#fff;overflow-x:hidden;min-height:100vh;
+}
+
+/* MESH BG */
+.bg-mesh{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 20%,rgba(168,85,247,.28) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 75%,rgba(34,211,238,.22) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 50%,rgba(255,77,141,.18) 0%,transparent 60%),
+    var(--bg);
+}
+
+/* BUBBLES */
+#bubbles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bub{
+  position:absolute;border-radius:50%;opacity:0;
+  animation:rise var(--d) ease-in infinite var(--dl);
+}
+@keyframes rise{
+  0%  {transform:translateY(110vh) scale(0);opacity:0}
+  15% {opacity:.65}
+  85% {opacity:.35}
+  100%{transform:translateY(-15vh) scale(1.2);opacity:0}
+}
+
+/* PAGE */
+.page{
+  position:relative;z-index:1;
+  max-width:660px;margin:0 auto;
+  padding:50px 20px 80px;text-align:center;
+}
+
+/* BADGE */
+.badge-top{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:100px;padding:6px 18px;
+  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);backdrop-filter:blur(8px);margin-bottom:20px;
+}
+.badge-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--pink);box-shadow:0 0 8px var(--pink);
+  animation:pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.6)}}
+
+/* TITLE */
+.title-main{
+  font-family:'Pacifico',cursive;
+  font-size:clamp(2.8rem,9vw,5.2rem);line-height:1.05;
+  background:linear-gradient(90deg,var(--pink),var(--purple),var(--cyan),var(--yellow),var(--pink));
+  background-size:300% 100%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:rainbow 3s linear infinite;
+}
+@keyframes rainbow{0%{background-position:0%}100%{background-position:300%}}
+
+.title-sub{
+  font-family:'Nunito',sans-serif;font-size:clamp(1rem,3vw,1.3rem);font-weight:800;
+  letter-spacing:.06em;margin-top:12px;
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.age-chip{
+  display:inline-block;margin-top:14px;
+  background:linear-gradient(135deg,var(--yellow),var(--orange));
+  color:#1a1a1a;font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;
+  letter-spacing:.05em;padding:6px 22px;border-radius:100px;
+  box-shadow:0 4px 20px rgba(251,191,36,.45);
+}
+
+/* PHOTO */
+.photo-section{margin:40px auto 0;position:relative;width:200px;height:200px}
+.photo-ring{
+  position:absolute;inset:-14px;border-radius:32px;
+  background:conic-gradient(var(--pink),var(--purple),var(--cyan),var(--lime),var(--yellow),var(--orange),var(--pink));
+  animation:spin 4s linear infinite;filter:blur(2px);
+}
+.photo-ring2{
+  position:absolute;inset:-8px;border-radius:28px;
+  background:conic-gradient(var(--cyan),var(--pink),var(--yellow),var(--purple),var(--cyan));
+  animation:spin 7s linear infinite reverse;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.photo-inner{
+  position:relative;z-index:2;
+  width:200px;height:200px;border-radius:24px;overflow:hidden;
+  background:linear-gradient(135deg,#1e1e3a,#2d1b4e);
+  border:4px solid var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:6px;transition:transform .3s;
+}
+.photo-inner:hover{transform:scale(1.03)}
+.photo-inner img{width:100%;height:100%;object-fit:cover;display:block;border-radius:20px}
+.photo-placeholder{pointer-events:none;text-align:center;display:none}
+.photo-placeholder .icon{font-size:2.2rem}
+.photo-placeholder p{font-size:.72rem;color:rgba(255,255,255,.6);line-height:1.5;margin-top:4px;font-weight:600}
+#fileInput{display:none}
+
+
+
+/* CAKE */
+.cake-section{margin:48px 0 0;position:relative}
+svg.cake{width:240px;height:auto;overflow:visible;filter:drop-shadow(0 0 28px rgba(255,77,141,.4))}
+.flame{transform-origin:center bottom;animation:flicker .35s ease-in-out infinite alternate}
+.flame:nth-child(2){animation-delay:.1s}
+.flame:nth-child(3){animation-delay:.22s}
+@keyframes flicker{
+  0%  {transform:scaleX(1)   scaleY(1)   rotate(-4deg);opacity:1}
+  100%{transform:scaleX(.8) scaleY(1.25) rotate(4deg);opacity:.8}
+}
+.cake-aurora{
+  position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+  width:170px;height:90px;
+  background:radial-gradient(ellipse,rgba(255,200,80,.55) 0%,transparent 70%);
+  pointer-events:none;filter:blur(8px);
+}
+
+/* AGE DISPLAY */
+.age-display{margin-top:16px}
+.age-num{
+  font-family:'Pacifico',cursive;font-size:3rem;
+  background:linear-gradient(90deg,var(--yellow),var(--orange));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.age-lbl{
+  font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-top:2px;
+}
+
+/* MESSAGE CARD */
+.message-card{
+  position:relative;margin:44px 0;border-radius:28px;padding:36px 30px;
+  background:linear-gradient(135deg,rgba(168,85,247,.13),rgba(34,211,238,.09),rgba(255,77,141,.11));
+  border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(12px);overflow:hidden;
+}
+.message-card::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(168,85,247,.3),transparent 70%);pointer-events:none;
+}
+.message-card::after{
+  content:'';position:absolute;bottom:-60px;left:-60px;
+  width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(34,211,238,.25),transparent 70%);pointer-events:none;
+}
+.msg-emoji{font-size:2rem;display:block;margin-bottom:14px}
+.msg-name{
+  font-family:'Pacifico',cursive;
+  font-size:clamp(1.5rem,5vw,2rem);
+  background:linear-gradient(90deg,var(--pink),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  display:block;margin-bottom:18px;
+}
+.message-card p{
+  font-family:'Nunito',sans-serif;font-size:1.02rem;line-height:1.9;
+  color:rgba(255,255,255,.88);font-weight:500;position:relative;z-index:1;
+}
+
+/* WISHES */
+.wishes-title{
+  font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);margin-bottom:20px;
+}
+.wishes{display:flex;flex-direction:column;gap:12px;margin:24px 0 40px;text-align:left}
+.wish-item{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;padding:16px 18px;
+  font-size:.95rem;font-weight:500;color:rgba(255,255,255,.85);line-height:1.6;
+  opacity:0;transform:translateY(16px);
+  transition:opacity .55s ease,transform .55s ease;
+}
+.wish-item.visible{opacity:1;transform:translateY(0)}
+.wish-icon{
+  width:40px;height:40px;border-radius:13px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:1.15rem;
+}
+.w1{background:linear-gradient(135deg,var(--pink),var(--purple))}
+.w2{background:linear-gradient(135deg,var(--cyan),var(--purple))}
+.w3{background:linear-gradient(135deg,var(--yellow),var(--orange))}
+.w4{background:linear-gradient(135deg,var(--lime),var(--cyan))}
+.w5{background:linear-gradient(135deg,var(--orange),var(--pink))}
+
+/* BUTTON */
+.confetti-btn{
+  background:linear-gradient(135deg,var(--pink),var(--purple),var(--cyan));
+  background-size:200% 200%;animation:btnShift 4s ease infinite;
+  border:none;border-radius:100px;padding:16px 48px;
+  font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;
+  color:#fff;cursor:pointer;
+  box-shadow:0 8px 32px rgba(168,85,247,.5);
+  transition:transform .2s,box-shadow .2s;letter-spacing:.04em;
+}
+@keyframes btnShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.confetti-btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 14px 44px rgba(168,85,247,.65)}
+.confetti-btn:active{transform:scale(.97)}
+
+/* FOOTER */
+.footer{
+  margin-top:60px;font-size:.72rem;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.25);
+}
+
+#confettiCanvas{position:fixed;inset:0;pointer-events:none;z-index:999}
+
+@media(max-width:420px){
+  .message-card{padding:28px 18px}
+  .wish-item{padding:12px 14px;font-size:.88rem}
+}
+</style>
+</head>
+<body>
+
+<canvas id="confettiCanvas"></canvas>
+<div class="bg-mesh"></div>
+<div id="bubbles"></div>
+
+<div class="page">
+
+  <div class="badge-top">
+    <span class="badge-dot"></span>
+    Perayaan Spesial 🎉
+  </div>
+
+  <h1 class="title-main">Happy Birthday!</h1>
+  <div class="title-sub">Nanda Cantika Malaysiene</div>
+  <div class="age-chip">🎂 &nbsp; 26 Tahun &nbsp; 🎂</div>
+
+  <!-- Photo Slot -->
+  <div class="photo-section">
+    <div class="photo-ring"></div>
+    <div class="photo-ring2"></div>
+    <div class="photo-inner" id="photoInner">
+      <img id="photoImg" alt="Foto sayangkuuu"/>
+    </div>
+  </div>
+
+  <!-- Cake -->
+  <div class="cake-section">
+    <div class="cake-aurora"></div>
+    <svg class="cake" viewBox="0 0 240 195" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gt" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f472b6"/><stop offset="100%" stop-color="#c026d3"/></linearGradient>
+        <linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#818cf8"/><stop offset="100%" stop-color="#6d28d9"/></linearGradient>
+        <linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb7185"/><stop offset="100%" stop-color="#e11d48"/></linearGradient>
+        <linearGradient id="gbt" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fda4af"/><stop offset="100%" stop-color="#f9a8d4"/></linearGradient>
+      </defs>
+      <g class="flame"><ellipse cx="78"  cy="24" rx="5.5" ry="9"  fill="#FCD34D" opacity=".95"/><ellipse cx="78"  cy="27" rx="3" ry="5.5" fill="#F59E0B"/></g>
+      <g class="flame"><ellipse cx="120" cy="14" rx="6"   ry="10" fill="#FCD34D" opacity="1"/><ellipse cx="120" cy="18" rx="3.5" ry="6" fill="#F59E0B"/></g>
+      <g class="flame"><ellipse cx="162" cy="24" rx="5.5" ry="9"  fill="#FCD34D" opacity=".95"/><ellipse cx="162" cy="27" rx="3" ry="5.5" fill="#F59E0B"/></g>
+      <rect x="75" y="33" width="7" height="22" rx="3" fill="#f9a8d4"/>
+      <rect x="117" y="24" width="7" height="24" rx="3" fill="#c4b5fd"/>
+      <rect x="159" y="33" width="7" height="22" rx="3" fill="#f9a8d4"/>
+      <ellipse cx="120" cy="62" rx="56" ry="12" fill="url(#gbt)"/>
+      <rect x="64" y="62" width="112" height="34" fill="url(#gt)"/>
+      <ellipse cx="120" cy="96" rx="56" ry="12" fill="url(#gbt)"/>
+      <ellipse cx="120" cy="96"  rx="74" ry="13" fill="#a78bfa"/>
+      <rect x="46" y="96" width="148" height="38" fill="url(#gm)"/>
+      <ellipse cx="120" cy="134" rx="74" ry="13" fill="#a78bfa"/>
+      <rect x="72"  y="108" width="8" height="3" rx="2" fill="#fcd34d" transform="rotate(-20,72,108)"/>
+      <rect x="98"  y="118" width="8" height="3" rx="2" fill="#6ee7b7" transform="rotate(15,98,118)"/>
+      <rect x="120" y="106" width="8" height="3" rx="2" fill="#f9a8d4" transform="rotate(-10,120,106)"/>
+      <rect x="144" y="116" width="8" height="3" rx="2" fill="#fcd34d" transform="rotate(25,144,116)"/>
+      <rect x="163" y="108" width="8" height="3" rx="2" fill="#93c5fd" transform="rotate(-15,163,108)"/>
+      <ellipse cx="120" cy="134" rx="90" ry="15" fill="#fda4af"/>
+      <rect x="30"  y="134" width="180" height="42" fill="url(#gb)"/>
+      <ellipse cx="120" cy="176" rx="90" ry="15" fill="#fda4af"/>
+      <circle cx="70"  cy="155" r="5" fill="#fcd34d" opacity=".85"/>
+      <circle cx="95"  cy="148" r="4" fill="#fff"    opacity=".4"/>
+      <circle cx="120" cy="157" r="5" fill="#a5f3fc" opacity=".85"/>
+      <circle cx="148" cy="148" r="4" fill="#fcd34d" opacity=".85"/>
+      <circle cx="172" cy="155" r="5" fill="#fff"    opacity=".4"/>
+      <ellipse cx="120" cy="180" rx="100" ry="11" fill="rgba(255,255,255,.1)"/>
+    </svg>
+    <div class="age-display">
+      <div class="age-num">26</div>
+      <div class="age-lbl">Tahun Penuh Cahaya ✨</div>
+    </div>
+  </div>
+
+  <!-- Message Card -->
+  <div class="message-card">
+    <span class="msg-emoji">🥳💖✨</span>
+    <span class="msg-name">sayangkuuu~ 🌸</span>
+    <p>
+      Heyyyy selamat ulang tahun yang ke-<strong>26</strong> yaaa sayangkuuu!! 🎊🎉<br/><br/>
+      Nggak nyangka udah sejauh ini perjalananmu — dan kamu tetep jadi
+      orang yang paling bikin aku senyum-senyum sendiri tiap inget kamu. 😊
+      Aura kamu itu beda banget, hangat, nyenengin, dan bikin betah siapapun
+      yang ada di sekitar kamu. 🌟<br/><br/>
+      Semoga di usia 26 ini semua yang kamu impiin pelan-pelan jadi nyata ya —
+      rezeki lancar, hati tenang, dan yang paling penting...
+      kamu bahagiaaaa terus! 💫<br/><br/>
+      <strong>Pokoknya sayangkuuu deserve semua hal indah di dunia ini! 💝</strong>
+    </p>
+  </div>
+
+  <!-- Wishes -->
+  <p class="wishes-title">✦ Doa & Harapan Untukmu ✦</p>
+  <div class="wishes" id="wishesList">
+    <div class="wish-item">
+      <div class="wish-icon w1">💖</div>
+      <span>Semoga sayangkuuu selalu dikelilingi orang-orang yang genuinely sayang, bukan yang fake-fake! 🙅</span>
+    </div>
+    <div class="wish-item">
+      <div class="wish-icon w2">🌟</div>
+      <span>Semoga tahun ini jadi turning point terbaik buat sayangkuuu — hal-hal baik terus dateng satu per satu!</span>
+    </div>
+    <div class="wish-item">
+      <div class="wish-icon w3">🚀</div>
+      <span>Semua goals sayangkuuu tahun ini? Kesampaian semua dong, bahkan lebih dari yang diexpect! 🔥</span>
+    </div>
+    <div class="wish-item">
+      <div class="wish-icon w4">🌿</div>
+      <span>Semoga sayangkuuu selalu sehat dan happy, karena energi positifnya itu priceless banget buat semua orang!</span>
+    </div>
+    <div class="wish-item">
+      <div class="wish-icon w5">✨</div>
+      <span>Di usia 26 ini, semoga sayangkuuu makin jadi versi terbaik diri sendiri — glowing inside out! 💅</span>
+    </div>
+  </div>
+
+  <button class="confetti-btn" onclick="launchConfetti()">🎉 Rayakan Sekarang! 🎊</button>
+
+  <div class="footer">Made with 💖 for sayangkuuu · 2025</div>
+</div>
+
+<script>
+/* BUBBLES */
+const bColors=['#ff4d8d','#a855f7','#22d3ee','#fbbf24','#f97316','#84cc16'];
+const bp=document.getElementById('bubbles');
+for(let i=0;i<35;i++){
+  const b=document.createElement('div');b.className='bub';
+  const s=6+Math.random()*14;
+  b.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}vw;background:${bColors[i%bColors.length]};--d:${7+Math.random()*8}s;--dl:${Math.random()*9}s`;
+  bp.appendChild(b);
+}
+
+/* PHOTO — programmer: ganti URL di bawah ini */
+const PHOTO_URL = 'https://i.pravatar.cc/300'; // ganti dengan URL foto sayangkuuu
+document.getElementById('photoImg').src = PHOTO_URL;
+
+/* WISHES */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.wish-item').forEach((el,i)=>{
+        setTimeout(()=>el.classList.add('visible'),i*120);
+      });
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:.15});
+obs.observe(document.getElementById('wishesList'));
+
+/* CONFETTI */
+const cc=document.getElementById('confettiCanvas');
+const ctx=cc.getContext('2d');
+let pieces=[],aid;
+const cColors=['#ff4d8d','#a855f7','#22d3ee','#fbbf24','#f97316','#84cc16','#ffffff'];
+
+function launchConfetti(){
+  cc.width=window.innerWidth;cc.height=window.innerHeight;
+  pieces=[];
+  for(let i=0;i<230;i++){
+    pieces.push({
+      x:Math.random()*cc.width,y:-20-Math.random()*230,
+      w:6+Math.random()*10,h:4+Math.random()*5,
+      color:cColors[Math.floor(Math.random()*cColors.length)],
+      vx:-2.5+Math.random()*5,vy:3+Math.random()*6,
+      angle:Math.random()*360,spin:-4+Math.random()*8,alpha:1,
+      shape:Math.random()>.5?'rect':'circle'
+    });
+  }
+  cancelAnimationFrame(aid);draw();
+}
+function draw(){
+  ctx.clearRect(0,0,cc.width,cc.height);
+  let alive=false;
+  pieces.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;p.angle+=p.spin;
+    if(p.y>cc.height*.65)p.alpha-=.018;
+    if(p.alpha<=0)return;
+    alive=true;ctx.save();
+    ctx.globalAlpha=Math.max(0,p.alpha);
+    ctx.translate(p.x,p.y);ctx.rotate(p.angle*Math.PI/180);
+    ctx.fillStyle=p.color;
+    if(p.shape==='circle'){ctx.beginPath();ctx.arc(0,0,p.w/2,0,Math.PI*2);ctx.fill();}
+    else ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+    ctx.restore();
+  });
+  if(alive)aid=requestAnimationFrame(draw);
+  else ctx.clearRect(0,0,cc.width,cc.height);
+}
+</script>
+</body>
+</html>
